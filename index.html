@@ -1,1 +1,54 @@
-# refactored-train
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パズドラ風パズル (最終統合版)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>パズドラ風パズル</h1>
+    
+    <div id="controls">
+        
+        <h2>✏️ 編集モード (設定と保存)</h2>
+        <div id="edit-mode-settings" style="border: 1px solid #0056b3; padding: 15px; margin-bottom: 20px;">
+            <label>操作時間 (秒): <input type="number" id="time-input" value="5" min="1"></label>
+            
+            <label>
+                盤面サイズ: 
+                <select id="board-size-select" onchange="updateDropCountDefaults()">
+                    <option value="5x6">5x6 (30マス)</option>
+                    <option value="6x7">6x7 (42マス)</option>
+                </select>
+            </label>
+
+            <h3 id="drop-settings-title">ドロップ数設定 (合計30個に調整されます)</h3>
+            <div id="drop-counts-container">
+                <label>🔥 火 (1): <input type="number" class="drop-count" data-type="1" value="5" min="0"></label>
+                <label>💧 水 (2): <input type="number" class="drop-count" data-type="2" value="5" min="0"></label>
+                <label>🌳 木 (3): <input type="number" class="drop-count" data-type="3" value="5" min="0"></label>
+                <label>✨ 光 (4): <input type="number" class="drop-count" data-type="4" value="5" min="0"></label>
+                <label>🌑 闇 (5): <input type="number" class="drop-count" data-type="5" value="5" min="0"></label>
+                <label>💖 回復 (6): <input type="number" class="drop-count" data-type="6" value="5" min="0"></label>
+            </div>
+            
+            <button onclick="saveSettings()">この設定を保存</button>
+            <p id="save-status" style="color: green; font-weight: bold; margin-top: 10px;"></p>
+        </div>
+
+        <h2>🎮 プレイモード (開始)</h2>
+        <button onclick="startGame()">保存した設定でゲーム開始</button>
+    </div>
+
+    <div id="status">
+        <div id="timer-display">TIME: 5.00</div>
+        <div id="combo-display">COMBO: 0</div>
+    </div>
+
+    <div id="puzzle-board">
+        </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
